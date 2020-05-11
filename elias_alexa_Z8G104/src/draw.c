@@ -9,18 +9,33 @@
 
 double sizeOfRoom = 200;
 
-GLfloat material_ambient_default[] = {0.9, 0.9, 0.9, 0.5};
+// anyagjellemő fények
 
-void draw_teapot_for_light(){
-    glPushMatrix();
-        glTranslatef(120, 15, 120);
-        glScalef(12, 12, 12);
-        glutSolidTeapot(1.0);
-    glPopMatrix();
-}
+GLfloat material_ambient_default[] = {0.9, 0.9, 0.9, 0.5};
+GLfloat material_specular[] = {0.5, 0.5, 0.0, 1};
+GLfloat material_ambient[] = {0.5, 0.5, 0.0, 1};
+GLfloat material_diffuse[] = {0.5, 0.5, 0.0, 1};
+GLfloat material_shininess[] = { 100.0 };
 
 void draw_content(World* world)
 {
+	glEnable(GL_TEXTURE_2D);
+	
+	
+		// anyagjellemő fények
+	glMaterialfv(GL_FRONT, GL_SPECULAR, material_specular);
+    glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
+    glMaterialfv(GL_FRONT, GL_SHININESS, material_shininess);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, material_diffuse);
+	
+		
+	GLfloat zeros[] = { 0, 0, 0 };
+	GLfloat ones[] = { 1, 1, 1 };
+	
+	
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, zeros);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, ones);
+	
 	Room roomToDraw = world -> room;
 	glEnable(GL_TEXTURE_2D);
 
@@ -31,27 +46,10 @@ void draw_content(World* world)
 
 	glPushMatrix();
 		glTranslatef(world->trophy1.position.x, world->trophy1.position.y, world->trophy1.position.z);
-
 		glMaterialfv(GL_FRONT, GL_AMBIENT, world->trophy1.material_ambient);
-
-
 		glBindTexture(GL_TEXTURE_2D, world->trophy1.texture);
 		glScalef(10.0f, 10.0f, 10.0f);
-
 		draw_model(&world->trophy1.model);
-    glPopMatrix();
-
-    glDisable(GL_TEXTURE_2D); // Delete, in case you want to add texture to trophy2
-
-	glPushMatrix();
-		glTranslatef(world->trophy2.position.x, world->trophy2.position.y, world->trophy2.position.z);
-
-		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, world->trophy2.material_ambient);
-
-		//glBindTexture(GL_TEXTURE_2D, world->trophy2.texture);
-		glScalef(10.0f, 10.0f, 10.0f);
-
-		draw_model(&world->trophy2.model);
     glPopMatrix();
 
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, material_ambient_default);

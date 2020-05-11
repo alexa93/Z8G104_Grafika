@@ -4,6 +4,7 @@
 
 #include "callbacks.h"
 
+// fényvizsgálat
 GLfloat light_position[] = {0, 150, 0, 0};
 GLfloat light_ambient[] = { 0.8, 0.8, 0.8, 0.8};
 GLfloat light_diffuse[] = {0.3, 0.3, 0.3, 0.9};
