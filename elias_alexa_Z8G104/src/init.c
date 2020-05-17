@@ -5,12 +5,22 @@
 #include "callbacks.h"
 
 // fényvizsgálat
-GLfloat light_position[] = {0, 150, 0, 0};
+	
+/*
+GLfloat light_position[] = {500, 500, 500, 500};
 GLfloat light_ambient[] = { 0.8, 0.8, 0.8, 0.8};
 GLfloat light_diffuse[] = {0.3, 0.3, 0.3, 0.9};
 GLfloat light_specular[] = {1.0, 1.0, 1.0, 1.0};
+*/ 
+
+
+GLfloat light_position[] = {0, 0, 0, 0};
+GLfloat light_ambient[] = { 0.1, 0.1, 0.1, 0 };
+GLfloat light_diffuse[] = { 0.5, 0.5, 0, 0 };
+GLfloat light_specular[] = { 1, 1, 1, 0 };
 
 void init()
+
 {
     set_callbacks();
 
@@ -24,6 +34,7 @@ void init()
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+	
 
 	glLightfv(GL_LIGHT1, GL_POSITION, light_position);
     glLightfv(GL_LIGHT1, GL_AMBIENT, light_ambient);

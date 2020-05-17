@@ -10,26 +10,37 @@
 double sizeOfRoom = 200;
 
 // anyagjellemő fények
-
+	
 GLfloat material_ambient_default[] = {0.24725, 0.1995, 0.0745, 1};
-
+/*
 GLfloat material_specular[] = {0.628281, 0.555802, 0.366065, 1};
 GLfloat material_ambient[] = {0.24725, 0.1995, 0.0745, 1};
 GLfloat material_diffuse[] = {0.75164, 0.60648, 0.22648, 1};
 GLfloat material_shininess[] = { 0.4 };
 
+
+*/
 void draw_content(World* world)
 {
 	glEnable(GL_TEXTURE_2D);
 	
 	
 		// anyagjellemő fények
+		
+		
+		GLfloat material_specular[] = {0.628281, 0.555802, 0.366065, 1};
+GLfloat material_ambient[] = {0.24725, 0.1995, 0.0745, 1};
+GLfloat material_diffuse[] = {0.75164, 0.60648, 0.22648, 1};
+GLfloat material_shininess[] = { 0.4 };
+
 	glMaterialfv(GL_FRONT, GL_SPECULAR, material_specular);
     glMaterialfv(GL_FRONT, GL_AMBIENT, material_ambient);
     glMaterialfv(GL_FRONT, GL_SHININESS, material_shininess);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, material_diffuse);
 	
 	
+
+
 	
 		
 	GLfloat zeros[] = { 0, 0, 0 };
@@ -46,20 +57,16 @@ void draw_content(World* world)
 		draw_walls(roomToDraw);
 		draw_ground(roomToDraw);
 	glPopMatrix();
-
-	glPushMatrix();
-	GLfloat material_ambient_default[] = {0.24725, 0.1995, 0.0745, 1};
-
-GLfloat material_specular[] = {0.628281, 0.555802, 0.366065, 1};
-GLfloat material_ambient[] = {0.24725, 0.1995, 0.0745, 1};
-GLfloat material_diffuse[] = {0.75164, 0.60648, 0.22648, 1};
-GLfloat material_shininess[] = { 0.4 };
+	
+glPushMatrix();
+	glEnable(GL_LIGHT1);
 		glTranslatef(world->trophy1.position.x, world->trophy1.position.y, world->trophy1.position.z);
 		glMaterialfv(GL_FRONT, GL_AMBIENT, world->trophy1.material_ambient);
 		glBindTexture(GL_TEXTURE_2D, world->trophy1.texture);
 		glScalef(10.0f, 10.0f, 10.0f);
 		draw_model(&world->trophy1.model);
     glPopMatrix();
+	
 
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, material_ambient_default);
 }

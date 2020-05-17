@@ -534,8 +534,9 @@ GLuint load_texture(const char* filename) {
 
 void init_entities(World* world) {
 	// Trophy1
+	
 	load_model("models//trophyobjectfile.obj", &world->trophy1.model);
-	world->trophy1.texture = load_texture("textures//trophy.png");
+	//world->trophy1.texture = load_texture("textures//trophy.png");
 	init_object(&world->trophy1, 20, 0);
 
 
@@ -549,4 +550,5 @@ void init_entities(World* world) {
 
 	// Help
 	world->helpTexture = load_texture("textures//help.png");
+	
 }
