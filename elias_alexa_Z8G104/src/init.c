@@ -14,9 +14,9 @@ GLfloat light_specular[] = {1.0, 1.0, 1.0, 1.0};
 */ 
 
 
-GLfloat light_position[] = {0, 0, 0, 0};
-GLfloat light_ambient[] = { 0.1, 0.1, 0.1, 0 };
-GLfloat light_diffuse[] = { 0.5, 0.5, 0, 0 };
+GLfloat light_position[] = {0, 50, 50, 1};
+GLfloat light_ambient[] = { 0.1, 0.1, 0.1, 1.0 };
+GLfloat light_diffuse[] = { 0.5, 0.5, 0, 1.0 };
 GLfloat light_specular[] = { 1, 1, 1, 0 };
 
 void init()
